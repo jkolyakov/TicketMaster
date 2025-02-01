@@ -23,4 +23,15 @@ jobs:
         run: npx hardhat compile
 
       - name: Run Tests
-        run: npx hardhat test
+        id: run-tests # Save the output for use in the next step
+        run: |
+          npx hardhat test | tee test-output.txt
+
+      - name: Verify 35 Passing Tests
+        run: |
+          if grep -q "35 passing" test-output.txt; then
+            echo "All tests passed (35 passing)."
+          else
+            echo "Test count does not match 35 passing. Failing the job."
+            exit 1
+          fi
