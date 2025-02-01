@@ -11,3 +11,5 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
+
+Note that this repo has an action workflow that is setup to automatically run the tests. It will error if not all of the 35 tests pass.
