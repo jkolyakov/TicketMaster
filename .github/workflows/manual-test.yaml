@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Compile the Code
-        run: npx redhat compile
+        run: npx hardhat compile
 
       - name: Run Tests
-        run: npx redhat test
+        run: npx hardhat test
