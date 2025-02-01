@@ -1,0 +1,26 @@
+name: Manual CI for Assignment Testing
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "23.6.0" # Use the Node.js version your project needs
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Compile the Code
+        run: npx redhat compile
+
+      - name: Run Tests
+        run: npx redhat test
